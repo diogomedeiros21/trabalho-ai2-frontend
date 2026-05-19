@@ -27,6 +27,9 @@ function App() {
 
       <div className="container py-4">
         <Routes>
+          {/* AQUI ESTÁ ELA! Se o link for totalmente limpo, abre logo os filmes */}
+          <Route path="/" element={<FilmeList />} />
+
           {/* Se o link acabar em /filmes/, mostra a lista de filmes */}
           <Route path="/filmes/" element={<FilmeList />} />
           
