@@ -7,7 +7,7 @@ import '../App.css';
 
 const FilmeList = () => {
   const [filmes, setFilmes] = useState([]);
-  const urlAPI = "http://localhost:3000/filmes";
+  const urlAPI = "https://trabalho-ai2-backend.onrender.com/filmes";
 
   useEffect(() => { LoadFilmes(); }, []);
 

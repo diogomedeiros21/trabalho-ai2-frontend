@@ -13,7 +13,7 @@ const FilmeAdd = () => {
   function SendSave(e) {
     e.preventDefault(); 
 
-    const baseUrl = "http://localhost:3000/filmes/filme_create"; 
+    const baseUrl = "https://trabalho-ai2-backend.onrender.com/filmes/filme_create"; 
 
     const datapost = {
       titulo: campTitulo,

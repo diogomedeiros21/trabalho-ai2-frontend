@@ -34,7 +34,7 @@ const FilmeEdit = () => {
 
   function SendUpdate(e) {
     e.preventDefault();
-    const url = "http://localhost:3000/filmes/filme_update/" + filmeId;
+    const url = "https://trabalho-ai2-backend.onrender.com/filmes/filme_update/" + filmeId;
 
     const datapost = {
       titulo: campTitulo,
