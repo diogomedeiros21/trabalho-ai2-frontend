@@ -6,16 +6,20 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import '../App.css';
 
 const FilmeEdit = () => {
+  // Variáveis para guardar os dados que vão aparecer no formulário
   const [campTitulo, setCampTitulo] = useState("");
   const [campDescricao, setCampDescricao] = useState("");
   const [campFoto, setCampFoto] = useState("");
   const [selectGenero, setSelectGenero] = useState("");
   const [stringGenero, setStringGenero] = useState("");
 
+  // Vai buscar o ID do filme ao endereço da página
   const { filmeId } = useParams();
 
   useEffect(() => {
-    const url = "http://localhost:3000/filmes/get/" + filmeId;
+    const url = "https://trabalho-ai2-backend.onrender.com/filmes/get/" + filmeId;
+    
+    // Pede ao backend os dados do filme com este ID
     axios.get(url)
       .then(res => {
         if (res.data.success) {
@@ -32,10 +36,14 @@ const FilmeEdit = () => {
       });
   }, [filmeId]);
 
+  // Função que é chamada quando clicamos no botão de atualizar filme
   function SendUpdate(e) {
     e.preventDefault();
+    
+    // Onde vamos mandar as alterações
     const url = "https://trabalho-ai2-backend.onrender.com/filmes/filme_update/" + filmeId;
 
+    // Dados novos que escrevemos
     const datapost = {
       titulo: campTitulo,
       descricao: campDescricao,
@@ -43,6 +51,7 @@ const FilmeEdit = () => {
       generoId: Number(selectGenero)
     };
 
+    // Envia as alterações
     axios.post(url, datapost)
       .then(response => {
         if (response.data.success) {
@@ -59,6 +68,7 @@ const FilmeEdit = () => {
       });
   }
 
+  // A parte visual da página 
   return (
     <div className="add-filme-container">
       <h2>Editar Filme</h2>

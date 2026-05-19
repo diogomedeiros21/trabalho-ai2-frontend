@@ -5,27 +5,31 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import '../App.css';
 
 const FilmeAdd = () => {
+  // Variáveis para guardar o que se vai escrever nas caixas de texto
   const [campTitulo, setCampTitulo] = useState("");
   const [campDescricao, setCampDescricao] = useState("");
   const [campFoto, setCampFoto] = useState("");
   const [selectGenero, setSelectGenero] = useState("");
 
+  // Função que é chamada quando clicamos no botão de gravar filme
   function SendSave(e) {
-    e.preventDefault(); 
+    e.preventDefault();
 
+    // Onde vamos mandar os dados
     const baseUrl = "https://trabalho-ai2-backend.onrender.com/filmes/filme_create"; 
 
+    // Dados todos do formulário para enviar
     const datapost = {
       titulo: campTitulo,
       descricao: campDescricao, 
       foto: campFoto,
-      generoId: Number(selectGenero)
+      generoId: Number(selectGenero) // Transforma o ID do género num número para a base de dados
     };
 
+    // Enviar para o backend
     axios.post(baseUrl, datapost)
       .then(response => {
         if (response.data.success === true) {
-          // AVISO DE SUCESSO
           Swal.fire({
             icon: 'success',
             title: 'Guardado!',
@@ -34,6 +38,7 @@ const FilmeAdd = () => {
             timer: 1500
           });
           
+          // Limpa as caixas de texto todas para podermos adicionar outro filme logo a seguir
           setCampTitulo("");
           setCampDescricao("");
           setCampFoto("");
@@ -57,6 +62,7 @@ const FilmeAdd = () => {
       });
   } 
 
+  // Parte visual
   return (
     <div className="add-filme-container">
       <h2>Adicionar Novo Filme</h2>
@@ -105,4 +111,4 @@ const FilmeAdd = () => {
   );
 };
 
-export default FilmeAdd;  
+export default FilmeAdd;
